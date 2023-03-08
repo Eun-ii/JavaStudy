@@ -1,26 +1,58 @@
 package mypack;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class TestClass {
 	public static void main(String[] args) {
-		try {
-			System.out.println("구구단을 외자");
-			File file = new File("out.txt");
-			Scanner sc = new Scanner(file);
-			while(sc.hasNextInt()) {
-				int i1 = sc.nextInt();
-				int i2 = sc.nextInt();
-				int result = i1 * i2;
-				
-				System.out.printf("%d x %d = %d\n", i1, i2, result);
+		System.out.println("3.6.9 게임 박수자리엔 a 입력");
+		Scanner sc = new Scanner(System.in);
+		boolean istrue = true;
+		int seq = 1;
+		while(istrue) {
+			String str = sc.nextLine();
+			istrue = Istrue(seq, str);
+			seq++;
+		}
+		System.out.println("땡! 3.6.9 게임 끝!");
+		
+		sc.close();
+	}
+	
+	static boolean Istrue(int seq, String item){
+		String strSeq = String.valueOf(seq);
+		int countseq = count369(strSeq);
+		String strseq = "";
+		
+		//3/6/9순서 인지 확인
+		if(countseq > 0) {
+			for(int i = 0; i < countseq; i++) {
+				strseq += 'a';
 			}
-			sc.close();
+			System.out.println(strseq + " " + item);
+			if(strseq == item) {
+				return true;
+			}
+		} else {
+			if(seq == Integer.valueOf(item)) {
+				return true;
+			}
 		}
-		catch(FileNotFoundException e) {
-			e.printStackTrace();
-		}
+
+		return false;
+	}
+	static int count369(String strSeq) {
+		int count = 0;
+		for (int i = 0; i < strSeq.length(); i++) {
+            if (strSeq.charAt(i) == '3') {
+                count++;
+            }
+            else if (strSeq.charAt(i) == '6') {
+                count++;
+            }
+            else if (strSeq.charAt(i) == '9') {
+                count++;
+            }
+        }
+		return count;
 	}
 }
