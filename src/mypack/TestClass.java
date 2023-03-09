@@ -13,7 +13,8 @@ public class TestClass {
 			istrue = Istrue(seq, str);
 			seq++;
 		}
-		System.out.println("땡! 3.6.9 게임 끝!");
+		seq--;
+		System.out.println("땡! \"" + seq + "\" 3.6.9 게임 끝!");
 		
 		sc.close();
 	}
@@ -28,8 +29,8 @@ public class TestClass {
 			for(int i = 0; i < countseq; i++) {
 				strseq += 'a';
 			}
-			System.out.println(strseq + " " + item);
-			if(strseq == item) {
+//			System.out.println(strseq + ", " + item);
+			if(strseq.equals(item)) {
 				return true;
 			}
 		} else {
